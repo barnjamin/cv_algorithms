@@ -37,7 +37,7 @@ def grassfire_transform(mask):
     # Left to right, top to bottom
     for x in range(w):
         for y in range(h):
-            if imgGray[y, x] != 0: # Pixel in contour
+            if mask[y, x] != 0: # Pixel in contour
                 north = 0 if y == 0 else grassfire[y - 1, x]
                 west = 0 if x == 0 else grassfire[y, x - 1]
                 if x == 3 and y == 3:
@@ -48,7 +48,7 @@ def grassfire_transform(mask):
     # Right to left, bottom to top
     for x in range(w - 1, -1, -1):
         for y in range(h - 1, -1, -1):
-            if gf[y, x] != 0: # Pixel in contour
+            if grassfire[y, x] != 0: # Pixel in contour
                 south = 0 if y == (h - 1) else grassfire[y + 1, x]
                 east = 0 if x == (w - 1) else grassfire[y, x + 1]
                 grassfire[y, x] = min(grassfire[y, x],
